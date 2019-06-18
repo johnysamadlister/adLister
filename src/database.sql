@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS ads(
 CREATE TABLE IF NOT EXISTS category(
   id                    INT UNSIGNED NOT NULL AUTO_INCREMENT,
   category_name         varchar(255) NOT NULL,
-  category_description  TEXT
+  category_description  TEXT,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS ads_cat(
