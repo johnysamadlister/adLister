@@ -37,6 +37,21 @@ CREATE TABLE IF NOT EXISTS ads_cat(
                                     FOREIGN KEY (category_id) REFERENCES team_adlister_db.category(id)
 );
 
+
+-- Creating a table for messages:
+
+CREATE TABLE IF NOT EXISTS messages(
+                                    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                    sender_id INT UNSIGNED NOT NULL,
+                                    recipient_id INT UNSIGNED NOT NULL,
+                                    ad_id INT UNSIGNED NOT NULL,
+                                    body TEXT NOT NULL,
+                                    PRIMARY KEY (id),
+                                    FOREIGN KEY (sender_id) REFERENCES team_adlister_db.users(id),
+                                    FOREIGN KEY (recipient_id) REFERENCES team_adlister_db.users(id),
+                                    FOREIGN KEY (ad_id) REFERENCES team_adlister_db.ads(id)
+);
+
 DROP DATABASE team_adlister_db;
 
 DROP TABLE team_adlister_db.users;
