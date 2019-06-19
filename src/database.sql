@@ -39,9 +39,11 @@ CREATE TABLE IF NOT EXISTS ads_cat(
 
 
 -- Creating a table for messages:
+DROP TABLE IF EXISTS messages;
 
 CREATE TABLE IF NOT EXISTS messages(
                                     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                    date DATETIME NOT NULL,
                                     sender_id INT UNSIGNED NOT NULL,
                                     recipient_id INT UNSIGNED NOT NULL,
                                     ad_id INT UNSIGNED NOT NULL,
