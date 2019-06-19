@@ -6,7 +6,8 @@
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
 </head>
-<body>
+
+<body style="background-image: url(&quot;https://images.iphonephotographyschool.com/11918/1120b/iPhone-Photos-Texture-67.jpg&quot;); background-repeat: no-repeat; background-size: cover">
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="jumbotron jumbotron-fluid">
@@ -21,14 +22,18 @@
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
+                    <li class="list-group-item"> ${ad.userId}</li>
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
                 </ul>
-                    <img src="${ad.img}" class="card-text mx-auto" alt="...">
+                    <img src="${pageContext.request.contextPath}img/default_profile.png}" class="card-text mx-auto" alt="...">
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
             </div>
         </c:forEach>
            </div>
        </div>
+
+<div class="" style></div>
+<div class=""></div>
 
 
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
