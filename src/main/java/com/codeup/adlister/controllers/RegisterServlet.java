@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }else{
-            img = "img/profile_Image_" + ((Math.random()*10)+1) + ".png";
+            img = "img/profile_Image_" + Math.floor((Math.random()*10)+1) + ".png";
             String hash_word = BCrypt.hashpw(password, BCrypt.gensalt());
             User user = new User(username, email, hash_word, img);
             DaoFactory.getUsersDao().insert(user);
