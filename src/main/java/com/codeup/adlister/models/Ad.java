@@ -5,18 +5,29 @@ public class Ad {
     private long userId;
     private String title;
     private String description;
+    private String img;
 
-    public Ad(long id, long userId, String title, String description) {
+    public Ad(long id, long userId, String title, String description, String img) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.img = img;
     }
 
-    public Ad(long userId, String title, String description) {
+    public Ad(long userId, String title, String description, String img) {
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public long getId() {
