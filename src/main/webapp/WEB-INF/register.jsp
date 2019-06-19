@@ -12,7 +12,7 @@
             <h1 style="text-align: center">Please fill in your information</h1>
             <form action="/register" method="post">
                 <div class="form-group">
-                    <% if (session.getAttribute("error") != null) { %> <h2><%= request.getSession().getAttribute("error") %></h2> <% }%>
+                    <% if (session.getAttribute("error") != null) { %> <div class="alert alert-danger"><%= request.getSession().getAttribute("error") %></div> <% }%>
                     <label for="username">Username</label>
                     <input id="username" name="username" class="form-control" type="text" required>
                 </div>
