@@ -5,20 +5,31 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String img;
 
     public User() {}
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, String img) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.img = img;
     }
 
-    public User(long id, String username, String email, String password) {
+    public User(long id, String username, String email, String password, String img) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public long getId() {
