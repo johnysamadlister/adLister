@@ -57,3 +57,5 @@ CREATE TABLE IF NOT EXISTS messages(
 DROP DATABASE team_adlister_db;
 
 DROP TABLE team_adlister_db.users;
+
+SELECT * FROM users WHERE id = 5;
