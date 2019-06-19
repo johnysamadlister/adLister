@@ -24,6 +24,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
+        String errormessage = "";
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -32,14 +33,26 @@ public class RegisterServlet extends HttpServlet {
             || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
+            errormessage = "Passwords must match.";
+            request.getSession().setAttribute("error", errormessage);
             response.sendRedirect("/register");
             return;
         }
 
-        boolean inputAlreadyExists = (DaoFactory.getUsersDao().findByUsername(username) != null)
-                || (DaoFactory.getUsersDao().findByEmail(email) != null );
+        boolean userAlreadyExists = (DaoFactory.getUsersDao().findByUsername(username) != null);
 
-        if (inputAlreadyExists) {
+        if (userAlreadyExists) {
+            errormessage = "That Username already exists.";
+            request.getSession().setAttribute("error", errormessage);
+            response.sendRedirect("/register");
+            return;
+        }
+
+        boolean emailAlreadyExists = (DaoFactory.getUsersDao().findByEmail(email) != null );
+
+        if (emailAlreadyExists) {
+            errormessage = "That e-mail is already in use.";
+            request.getSession().setAttribute("error", errormessage);
             response.sendRedirect("/register");
             return;
         }
@@ -56,6 +69,8 @@ public class RegisterServlet extends HttpServlet {
                 || username.contains("~");
 
         if (containsInvalidSymbol) {
+            errormessage = "Username cannot contain Special Symbols.";
+            request.getSession().setAttribute("error", errormessage);
             response.sendRedirect("/register");
             return;
         }
