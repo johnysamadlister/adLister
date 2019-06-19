@@ -18,14 +18,14 @@ public class CreateMessageServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
+        request.getRequestDispatcher("/WEB-INF/messages/create.jsp")
                 .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(), // for now were not gonna hard code a user.
+        Message message = new Message(
+                user.getId(),
                 request.getParameter("title"),
                 request.getParameter("description"),
                 request.getParameter("img")
