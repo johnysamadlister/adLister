@@ -24,11 +24,18 @@ public class CreateAdServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
+
+        String adimg = request.getParameter("img");
+
+        if (adimg == null){
+            adimg = "img/default_profile.png";
+        }
+
         Ad ad = new Ad(
                     user.getId(), // for now were not gonna hard code a user.
             request.getParameter("title"),
             request.getParameter("description"),
-            request.getParameter("img")
+            adimg
         );
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
