@@ -44,6 +44,22 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+        boolean containsInvalidSymbol =
+                   username.contains("@")
+                || username.contains("*")
+                || username.contains("&")
+                || username.contains("#")
+                || username.contains("%")
+                || username.contains("!")
+                || username.contains("$")
+                || username.contains("^")
+                || username.contains("~");
+
+        if (containsInvalidSymbol) {
+            response.sendRedirect("/register");
+            return;
+        }
+
         // create and save a new user
         System.out.println(img);
         if (img != null) {
@@ -53,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }else{
-            img = "img/profile_Image_" + Math.floor((Math.random()*10)+1) + ".png";
+            img = "img/default_profile.png";
             String hash_word = BCrypt.hashpw(password, BCrypt.gensalt());
             User user = new User(username, email, hash_word, img);
             DaoFactory.getUsersDao().insert(user);
