@@ -57,6 +57,34 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public List<Ad> limit(long limit, long offset) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads LIMIT ?,?");
+            ResultSet rs = stmt.executeQuery();
+            stmt.setLong(1,limit);
+            stmt.setLong(2, offset);
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    @Override
+    public List<Ad> addToAds(long limit, long offset, List<Ad> previousAds) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads LIMIT ?,?");
+            ResultSet rs = stmt.executeQuery();
+            stmt.setLong(1,limit);
+            stmt.setLong(2, offset);
+            return addAdsToResults(rs, previousAds);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
@@ -73,5 +101,12 @@ public class MySQLAdsDao implements Ads {
             ads.add(extractAd(rs));
         }
         return ads;
+    }
+
+    private List<Ad> addAdsToResults(ResultSet rs, List<Ad> previousAds) throws SQLException {
+        while (rs.next()) {
+            previousAds.add(extractAd(rs));
+        }
+        return previousAds;
     }
 }

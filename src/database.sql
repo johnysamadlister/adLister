@@ -37,8 +37,14 @@ CREATE TABLE IF NOT EXISTS ads_cat(
                                     FOREIGN KEY (category_id) REFERENCES team_adlister_db.category(id)
 );
 
+
+
+
 DROP DATABASE team_adlister_db;
 
 DROP TABLE team_adlister_db.users;
 
-SELECT * FROM users WHERE id = 5;
+
+SELECT * FROM users;
+SELECT * FROM users LIMIT 2,2;
+SELECT * FROM users LIMIT 4;
