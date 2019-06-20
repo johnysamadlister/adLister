@@ -23,9 +23,8 @@
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
-                    <li class="list-group-item"> ${ad.userId}</li>
+                    <li class="list-group-item"> ${ad.user.username}</li>
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
-                    <li class="list-group-item"> User: ${ad.user.username}</li>
                 </ul>
                     <img src="${pageContext.request.contextPath}img/default_profile.png}" class="card-text mx-auto" alt="...">
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
