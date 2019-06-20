@@ -91,7 +91,7 @@ public class MySQLAdsDao implements Ads {
             rs.getString("title"),
             rs.getString("description"),
             rs.getString("img"),
-                DaoFactory.getUsersDao().findById(rs.getLong("user_id"))
+
         );
     }
 

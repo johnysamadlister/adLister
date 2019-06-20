@@ -13,4 +13,4 @@ public interface Messages {
 
     List<Message>addToMessages(long limit, long offset, List<Message> previousMessages);
 }
-}
+

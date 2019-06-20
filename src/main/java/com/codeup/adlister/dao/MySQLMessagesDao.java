@@ -32,19 +32,48 @@ public class MySQLMessagesDao implements Messages {
             ResultSet rs = stmt.executeQuery();
             return createMessagesFromResults(rs);
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving all messages.", e);
         }
     }
 
     @Override
-    public Long insert(Ad ad) {
+    public List<Message>limit(long limit, long offset) {
+        PreparedStatement stmt = null;
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, description, img) VALUES (?, ?, ?, ?)";
+            stmt = connection.prepareStatement("SELECT * FROM messages LIMIT ?,?");
+            ResultSet rs = stmt.executeQuery();
+            stmt.setLong(1,limit);
+            stmt.setLong(2, offset);
+            return createMessagesFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all messages.", e);
+        }
+    }
+
+    @Override
+    public List<Message> addToMessages(long limit, long offset, List<Message> previousAds) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM messages LIMIT ?,?");
+            ResultSet rs = stmt.executeQuery();
+            stmt.setLong(1,limit);
+            stmt.setLong(2, offset);
+            return addMessagesToResults(rs, previousMessages);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all messages.", e);
+        }
+    }
+
+    @Override
+    public Long insert(Message message) {
+        try {
+            String insertQuery = "INSERT INTO messages(date, sender_id, recipient_id, message_id, body) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getDescription());
-            stmt.setString(4, ad.getImg());
+            stmt.setDate(1, message.getDate());
+            stmt.setLong(2, message.getSender_id());
+            stmt.setLong(3, message.getRecipient_id());
+            stmt.setLong(4, message.getMessage_id());
+            stmt.setString(5, message.getBody());
             System.out.println(stmt);
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
@@ -54,20 +83,31 @@ public class MySQLMessagesDao implements Messages {
             throw new RuntimeException("Error creating a new message.", e);
         }
     }
-    private Message extractMessaged(ResultSet rs) throws SQLException {
+    private Message extractMessage(ResultSet rs) throws SQLException {
         return new Message(
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description"),
-            rs.getString("img")
+                rs.getLong("id"),
+                rs.getDate("date"),
+            rs.getLong("sender_id"),
+            rs.getLong("recipient_id"),
+            rs.getLong("message_id"),
+            rs.getString("body")
+//                DaoFactory.getUsersDao().findById(rs.getLong("user_id"))  <-- What is this doing?
+
         );
     }
 
     private List<Message> createMessagesFromResults(ResultSet rs) throws SQLException {
-        List<Message> ads = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
         while (rs.next()) {
-            ads.add(extractMessage(rs));
+            messages.add(extractMessage(rs));
         }
-        return ads;
+        return messages;
+    }
+
+    private List<Message> addMessagesToResults(ResultSet rs, List<Message> previousMessages) throws SQLException {
+        while (rs.next()) {
+            previousMessages.add(extractMessage(rs));
+        }
+        return previousMessages;
     }
 }

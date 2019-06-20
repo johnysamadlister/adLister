@@ -30,7 +30,7 @@ public class CreateMessageServlet extends HttpServlet {
                 request.getParameter("description"),
                 request.getParameter("img")
         );
-        DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
+        DaoFactory.getMessagesDao().insert(message);
+        response.sendRedirect("/messages");
     }
 }
