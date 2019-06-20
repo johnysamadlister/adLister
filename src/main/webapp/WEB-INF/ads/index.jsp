@@ -1,3 +1,4 @@
+<%@ page import="com.codeup.adlister.dao.DaoFactory" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,6 +23,7 @@
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
+                    <li class="list-group-item"> User: ${ad.user.username}</li>
                 </ul>
                     <img src="${ad.img}" class="card-text mx-auto" alt="...">
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
