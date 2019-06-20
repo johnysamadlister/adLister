@@ -46,6 +46,7 @@ DROP TABLE team_adlister_db.users;
 
 
 SELECT * FROM users;
+
 SELECT * FROM users LIMIT 2,2;
 SELECT * FROM users LIMIT 4;
 
@@ -74,3 +75,4 @@ CREATE TABLE IF NOT EXISTS messages(
                                        FOREIGN KEY (recipient_id) REFERENCES team_adlister_db.users(id),
                                        FOREIGN KEY (ad_id) REFERENCES team_adlister_db.ads(id)
 );
+
