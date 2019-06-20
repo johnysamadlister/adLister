@@ -48,7 +48,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findById(long id) {
-        String query = "SELECT username, img FROM users WHERE id = ?";
+        String query = "SELECT * FROM users WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
