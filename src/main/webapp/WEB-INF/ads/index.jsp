@@ -33,6 +33,9 @@
         </c:forEach>
            </div>
        </div>
+        <form action="/ads" method="GET">
+            <button id="load" class="btn btn-lg btn-primary">Load More Ads</button>
+        </form>
 
 <div class="" style></div>
 <div class=""></div>
