@@ -74,10 +74,12 @@ public class MySQLAdsDao implements Ads {
     @Override
     public List<Ad> addToAds(long limit, long offset, List<Ad> previousAds) {
         PreparedStatement stmt = null;
+//        List<Ad> newaddlist = new ArrayList<>();
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads LIMIT ? OFFSET    ?");
+//            if (previousAds == null)
+            stmt = connection.prepareStatement("SELECT * FROM ads LIMIT ? OFFSET ?");
             stmt.setLong(1,limit);
-            stmt.setLong(2, offset);
+            stmt.setLong(2,offset);
             ResultSet rs = stmt.executeQuery();
             return addAdsToResults(rs, previousAds);
         } catch (SQLException e) {
