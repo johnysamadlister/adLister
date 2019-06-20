@@ -46,5 +46,5 @@ DROP TABLE team_adlister_db.users;
 
 
 SELECT * FROM users;
-SELECT * FROM users LIMIT 2,2;
+SELECT * FROM users LIMIT 2,;
 SELECT * FROM users LIMIT 4;
