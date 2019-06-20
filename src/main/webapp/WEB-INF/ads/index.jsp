@@ -23,16 +23,19 @@
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
+<<<<<<< HEAD
                     <li class="list-group-item"> ${ad.user.username}</li>
+=======
+>>>>>>> a2fb32db6a8ec4a9c46f28726d8bee3a0bb51ca5
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
                 </ul>
                     <img src="${pageContext.request.contextPath}img/default_profile.png}" class="card-text mx-auto" alt="...">
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
-                <ul class="row">
-                    <li class="col col-4"><button class="btn btn-danger">DELETE</button></li>
-                    <li class="col col-4"><button class="btn btn-primary">EDIT</button></li>
-                    <li class="col col-4"><button class="btn btn-dark">MESSAGE</button></li>
-                </ul>
+                <div class="row justify-content-between mx-2">
+                    <button class="btn btn btn-danger col">Delete</button>
+                    <button class="btn btn-primary col">Edit</button>
+                    <button class="btn btn-dark col">Message</button>
+                </div>
             </div>
         </c:forEach>
            </div>
