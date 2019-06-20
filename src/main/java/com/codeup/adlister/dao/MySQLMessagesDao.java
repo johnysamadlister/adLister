@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Ad;
+//import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Message;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -24,12 +25,12 @@ public class MySQLMessagesDao implements Messages {
     }
 
     @Override
-    public List<Ad> all() {
+    public List<Message> all() {
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement("SELECT * FROM messages");
             ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
+            return createMessagesFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
@@ -53,9 +54,8 @@ public class MySQLMessagesDao implements Messages {
             throw new RuntimeException("Error creating a new message.", e);
         }
     }
-
-    private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
+    private Message extractMessaged(ResultSet rs) throws SQLException {
+        return new Message(
             rs.getLong("user_id"),
             rs.getString("title"),
             rs.getString("description"),
@@ -63,10 +63,10 @@ public class MySQLMessagesDao implements Messages {
         );
     }
 
-    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
-        List<Ad> ads = new ArrayList<>();
+    private List<Message> createMessagesFromResults(ResultSet rs) throws SQLException {
+        List<Message> ads = new ArrayList<>();
         while (rs.next()) {
-            ads.add(extractAd(rs));
+            ads.add(extractMessage(rs));
         }
         return ads;
     }

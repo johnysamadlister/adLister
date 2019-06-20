@@ -7,23 +7,23 @@ public class Message {
     private Date date;
     private long sender_id;
     private long recipient_id;
-    private long ad_id;
+    private long message_id;
     private String body;
 
-    public Message(long id, Date date, long sender_id, long recipient_id, long ad_id, String body) {
+    public Message(long id, Date date, long sender_id, long recipient_id, long message_id, String body) {
         this.id = id;
         this.date = date;
         this.sender_id = sender_id;
         this.recipient_id = recipient_id;
-        this.ad_id = ad_id;
+        this.message_id = message_id;
         this.body = body;
     }
 
-    public Message (Date date, long sender_id, long recipient_id, long ad_id, String body) {
+    public Message (Date date, long sender_id, long recipient_id, long message_id, String body) {
         this.date = date;
         this.sender_id = sender_id;
         this.recipient_id = recipient_id;
-        this.ad_id = ad_id;
+        this.message_id = message_id;
         this.body = body;
     }
 
@@ -43,8 +43,8 @@ public class Message {
         return recipient_id;
     }
 
-    public long getAd_id() {
-        return ad_id;
+    public long getMessage_id() {
+        return message_id;
     }
 
     public String getBody() {
@@ -67,8 +67,8 @@ public class Message {
         this.recipient_id = recipient_id;
     }
 
-    public void setAd_id(long ad_id) {
-        this.ad_id = ad_id;
+    public void setMessage_id(long ad_id) {
+        this.message_id = message_id;
     }
 
     public void setBody(String body) {
