@@ -6,6 +6,7 @@ public class Ad {
     private String title;
     private String description;
     private String img;
+    private User user;
 
     public Ad(long id, long userId, String title, String description, String img) {
         this.id = id;
@@ -21,6 +22,15 @@ public class Ad {
         this.description = description;
         this.img = img;
     }
+
+    public Ad(long id ,String title, String description, String img, User user) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.img = img;
+        this.user = user;
+    }
+
 
     public String getImg() {
         return img;
@@ -60,5 +70,13 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

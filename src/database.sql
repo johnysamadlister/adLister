@@ -38,24 +38,39 @@ CREATE TABLE IF NOT EXISTS ads_cat(
 );
 
 
--- Creating a table for messages:
-DROP TABLE IF EXISTS messages;
 
-CREATE TABLE IF NOT EXISTS messages(
-                                    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                    date DATETIME NOT NULL,
-                                    sender_id INT UNSIGNED NOT NULL,
-                                    recipient_id INT UNSIGNED NOT NULL,
-                                    ad_id INT UNSIGNED NOT NULL,
-                                    body TEXT NOT NULL,
-                                    PRIMARY KEY (id),
-                                    FOREIGN KEY (sender_id) REFERENCES team_adlister_db.users(id),
-                                    FOREIGN KEY (recipient_id) REFERENCES team_adlister_db.users(id),
-                                    FOREIGN KEY (ad_id) REFERENCES team_adlister_db.ads(id)
-);
 
 DROP DATABASE team_adlister_db;
 
 DROP TABLE team_adlister_db.users;
 
-SELECT * FROM users WHERE id = 5;
+
+SELECT * FROM users;
+SELECT * FROM users LIMIT 2,2;
+SELECT * FROM users LIMIT 4;
+
+
+
+
+
+
+
+
+
+
+
+-- Creating a table for messages:
+DROP TABLE IF EXISTS messages;
+
+CREATE TABLE IF NOT EXISTS messages(
+                                       id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                       date DATETIME NOT NULL,
+                                       sender_id INT UNSIGNED NOT NULL,
+                                       recipient_id INT UNSIGNED NOT NULL,
+                                       ad_id INT UNSIGNED NOT NULL,
+                                       body TEXT NOT NULL,
+                                       PRIMARY KEY (id),
+                                       FOREIGN KEY (sender_id) REFERENCES team_adlister_db.users(id),
+                                       FOREIGN KEY (recipient_id) REFERENCES team_adlister_db.users(id),
+                                       FOREIGN KEY (ad_id) REFERENCES team_adlister_db.ads(id)
+);
