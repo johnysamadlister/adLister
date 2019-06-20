@@ -29,6 +29,11 @@
                 </ul>
                     <img src="${pageContext.request.contextPath}img/default_profile.png}" class="card-text mx-auto" alt="...">
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
+                <ul class="row">
+                    <li class="col col-4"><button class="btn btn-danger">DELETE</button></li>
+                    <li class="col col-4"><button class="btn btn-primary">EDIT</button></li>
+                    <li class="col col-4"><button class="btn btn-dark">MESSAGE</button></li>
+                </ul>
             </div>
         </c:forEach>
            </div>
@@ -39,7 +44,6 @@
 
 <div class="" style></div>
 <div class=""></div>
-
 
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
 </body>
