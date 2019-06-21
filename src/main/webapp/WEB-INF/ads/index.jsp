@@ -13,7 +13,7 @@
 
 </head>
 
-<body style="background-image: url(&quot;https://images.iphonephotographyschool.com/11918/1120b/iPhone-Photos-Texture-67.jpg&quot;); background-repeat: no-repeat; background-size: cover">
+<jsp:include page="/WEB-INF/partials/body_top.jsp" />
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="jumbotron jumbotron-fluid bg-dark text-light">
@@ -70,5 +70,4 @@
 <div class=""></div>
 
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
-</body>
 </html>
