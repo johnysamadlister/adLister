@@ -13,4 +13,6 @@ public interface Ads {
     List<Ad>limit(long limit, long offset);
 
     List<Ad>addToAds(long limit, long offset, List<Ad> previousAds);
+
+    List<Ad>searchAds(String search);
 }

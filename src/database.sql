@@ -50,6 +50,7 @@ SELECT * FROM users;
 SELECT * FROM users LIMIT 2,2;
 SELECT * FROM users LIMIT 4;
 
+SELECT * FROM ads JOIN users ON users.id = ads.user_id WHERE ads.title LIKE '%samscamp%' OR ads.description LIKE '%samscamp%' OR users.username LIKE '%samscamp%';
 
 
 
