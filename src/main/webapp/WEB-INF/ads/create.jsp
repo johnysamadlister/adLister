@@ -18,27 +18,27 @@
                 <div class="form-group d-flex justify-content-between">
                     <span class="badge badge-pill badge-primary p-2">
                         Electronics
-                        <input type="checkbox" name="category" value="Electronics">
+                        <input type="checkbox" name="categories" value="Electronics">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Automobile
-                        <input type="checkbox" name="category" value="Automobile">
+                        <input type="checkbox" name="ccategories" value="Automobile">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Tools
-                        <input type="checkbox" name="category" value="Tools">
+                        <input type="checkbox" name="categories" value="Tools">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Jobs
-                        <input type="checkbox" name="category" value="Jobs">
+                        <input type="checkbox" name="categories" value="Jobs">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Games
-                        <input type="checkbox" name="category" value="Games">
+                        <input type="checkbox" name="categories" value="Games">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Toys
-                        <input type="checkbox" name="category" value="Toys">
+                        <input type="checkbox" name="categories" value="Toys">
                     </span>
                 </div>
                 <div class="form-group">

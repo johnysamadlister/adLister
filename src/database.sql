@@ -61,7 +61,7 @@ SELECT * FROM ads JOIN users ON users.id = ads.user_id WHERE ads.title LIKE '%sa
 
 
 
--- Creating a table for messages:
+              -- Creating a table for messages:
 DROP TABLE IF EXISTS messages;
 
 CREATE TABLE IF NOT EXISTS messages(
@@ -77,3 +77,19 @@ CREATE TABLE IF NOT EXISTS messages(
                                        FOREIGN KEY (ad_id) REFERENCES team_adlister_db.ads(id)
 );
 
+SELECT * FROM ads
+    JOIN ads_cat ON ads_cat.ad_id = ads.id
+    JOIN category ON category.id = ads_cat.category_id
+    JOIN users ON users.id = ads.user_id where user_id = 5;
+
+select ads.title, ads.description, ads.img, category.category_name, users.username
+from ads
+join ads_cat on ads_cat.ad_id = ads.id
+join category on category.id = ads_cat.category_id
+join users on users.id = ads.user_id;
+
+select ads.title, ads.description, users.username, category.category_name
+from ads
+join users on users.id = ads.user_id
+join ads_cat on ads_cat.ad_id = ads.id
+join category on category.id = ads_cat.category_id;
