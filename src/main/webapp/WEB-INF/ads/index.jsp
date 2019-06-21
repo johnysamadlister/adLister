@@ -19,7 +19,15 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Here are all the ads</h1>
-            <p class="lead">Browse ads, if you would like to create an ad register.</p>
+            <p class="lead">Browse all ads or search an item specifically</p>
+            <form action="/ads" method="post">
+                <div class="input-group mb-3">
+                    <input class="form-control" name="searchterm" type="text" placeholder="Search Ads" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">SEARCH</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
        <div class="container">
@@ -28,7 +36,6 @@
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
-                    <li class="list-group-item"> ${ad.user.username}</li>
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
 
                     <li class="list-group-item"> User: ${ad.user.username}</li>
