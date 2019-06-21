@@ -6,6 +6,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
         <ul class="nav">
             <% if (session.getAttribute("user") == null){%>
             <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
