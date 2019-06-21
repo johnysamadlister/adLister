@@ -1,4 +1,6 @@
 <%@ page import="com.codeup.adlister.dao.DaoFactory" %>
+<%@ page import="com.codeup.adlister.models.User" %>
+<%@ page import="com.codeup.adlister.models.Ad" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,7 +25,9 @@
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
+                    <li class="list-group-item"> ${ad.user.username}</li>
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
+
                     <li class="list-group-item"> User: ${ad.user.username}</li>
                     <c:forEach var="category" items="${categories}">
                         <li class="list-group-item">
@@ -31,21 +35,25 @@
                             ${ad.category}
                         </li>
                     </c:forEach>
-
                 </ul>
-                    <img src="${pageContext.request.contextPath}img/default_profile.png}" class="card-text mx-auto" alt="...">
+                <div style="background-image: url(""${ad.img}"")">
+                    <img src= class="card-text mx-auto" alt="..." style="height: 250px; width: 250px">
+                </div>
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
                 <div class="row justify-content-between mx-2">
-                    <button class="btn btn btn-danger col">Delete</button>
-                    <button class="btn btn-primary col">Edit</button>
-                    <button class="btn btn-dark col">Message</button>
+
+                    <button class="btn btn btn-danger col mx-2">Delete</button>
+                    <button class="btn btn-primary col mx-2">Edit</button>
+                    <button class="btn btn-dark col mx-2">Message</button>
                 </div>
             </div>
         </c:forEach>
            </div>
        </div>
         <form action="/ads" method="GET">
-            <button id="load" class="btn btn-lg btn-primary">Load More Ads</button>
+            <div class="d-flex justify-content-center">
+                <button id="load" class="btn btn-lg btn-primary shadow">Load More Ads</button>
+            </div>
         </form>
 
 <div class="" style></div>
