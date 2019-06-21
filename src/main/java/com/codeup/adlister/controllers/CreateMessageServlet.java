@@ -22,13 +22,16 @@ public class CreateMessageServlet extends HttpServlet {
         }
         request.getRequestDispatcher("/WEB-INF/messages/create.jsp")
                 .forward(request, response);
+
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
         long millis = System.currentTimeMillis();
         Date date = new Date(millis);
-        User recipient = (User) request.
+        User recipient = (User) request.getSession().setAttribute().getUser();
+        Ad ad = (Ad) request.getSession().getAttribute("messageAd");
 
 
 
