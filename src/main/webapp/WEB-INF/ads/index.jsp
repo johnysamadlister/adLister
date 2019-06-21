@@ -25,6 +25,13 @@
                 <ul class="list-group list group-flush mt-4">
                     <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
                     <li class="list-group-item"> User: ${ad.user.username}</li>
+                    <c:forEach var="category" items="${categories}">
+                        <li class="list-group-item">
+                            <span class="badge badge-pill badge-primary p-2">
+                            ${ad.category}
+                        </li>
+                    </c:forEach>
+
                 </ul>
                     <img src="${pageContext.request.contextPath}img/default_profile.png}" class="card-text mx-auto" alt="...">
                 <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>

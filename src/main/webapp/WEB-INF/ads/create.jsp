@@ -15,6 +15,32 @@
                     <label for="title">Title</label>
                     <input id="title" name="title" class="form-control" type="text">
                 </div>
+                <div class="form-group d-flex justify-content-between">
+                    <span class="badge badge-pill badge-primary p-2">
+                        Electronics
+                        <input type="checkbox" name="category" value="Electronics">
+                    </span>
+                    <span class="badge badge-pill badge-primary p-2">
+                         Automobile
+                        <input type="checkbox" name="category" value="Automobile">
+                    </span>
+                    <span class="badge badge-pill badge-primary p-2">
+                         Tools
+                        <input type="checkbox" name="category" value="Tools">
+                    </span>
+                    <span class="badge badge-pill badge-primary p-2">
+                         Jobs
+                        <input type="checkbox" name="category" value="Jobs">
+                    </span>
+                    <span class="badge badge-pill badge-primary p-2">
+                         Games
+                        <input type="checkbox" name="category" value="Games">
+                    </span>
+                    <span class="badge badge-pill badge-primary p-2">
+                         Toys
+                        <input type="checkbox" name="category" value="Toys">
+                    </span>
+                </div>
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea id="description" name="description" class="form-control" type="text"></textarea>
