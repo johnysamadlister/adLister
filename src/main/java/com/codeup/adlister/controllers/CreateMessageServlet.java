@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Message;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/messages/create")
 public class CreateMessageServlet extends HttpServlet {
@@ -24,12 +26,20 @@ public class CreateMessageServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
+        long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        User recipient = (User) request.
+
+
+
         Message message = new Message(
+                date,
                 user.getId(),
-                request.getParameter("title"),
-                request.getParameter("description"),
-                request.getParameter("img")
+                request.getParameter("recipient_id"),
+                request.getParameter("message_id"),
+                request.getParameter("body")
         );
+
         DaoFactory.getMessagesDao().insert(message);
         response.sendRedirect("/messages");
     }

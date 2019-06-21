@@ -1,6 +1,5 @@
 package com.codeup.adlister.dao;
 
-//import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Message;
 import com.mysql.cj.jdbc.Driver;
 
@@ -28,7 +27,9 @@ public class MySQLMessagesDao implements Messages {
     public List<Message> all() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM messages");
+
+
+            stmt = connection.prepareStatement("SELECT * FROM team_adlister_db.messages");
             ResultSet rs = stmt.executeQuery();
             return createMessagesFromResults(rs);
         } catch (SQLException e) {
@@ -40,7 +41,7 @@ public class MySQLMessagesDao implements Messages {
     public List<Message>limit(long limit, long offset) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM messages LIMIT ?,?");
+            stmt = connection.prepareStatement("SELECT * FROM team_adlister_db.messages LIMIT ?,?");
             ResultSet rs = stmt.executeQuery();
             stmt.setLong(1,limit);
             stmt.setLong(2, offset);
@@ -51,10 +52,10 @@ public class MySQLMessagesDao implements Messages {
     }
 
     @Override
-    public List<Message> addToMessages(long limit, long offset, List<Message> previousAds) {
+    public List<Message> addToMessages(long limit, long offset, List<Message> previousMessages) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM messages LIMIT ?,?");
+            stmt = connection.prepareStatement("SELECT * FROM team_adlister_db.messages LIMIT ?,?");
             ResultSet rs = stmt.executeQuery();
             stmt.setLong(1,limit);
             stmt.setLong(2, offset);
@@ -67,7 +68,7 @@ public class MySQLMessagesDao implements Messages {
     @Override
     public Long insert(Message message) {
         try {
-            String insertQuery = "INSERT INTO messages(date, sender_id, recipient_id, message_id, body) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO team_adlister_db.messages(date, sender_id, recipient_id, ad_id, body) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setDate(1, message.getDate());
             stmt.setLong(2, message.getSender_id());
@@ -87,7 +88,7 @@ public class MySQLMessagesDao implements Messages {
         return new Message(
                 rs.getLong("id"),
                 rs.getDate("date"),
-            rs.getLong("sender_id"),
+                rs.getLong("sender_id"),
             rs.getLong("recipient_id"),
             rs.getLong("message_id"),
             rs.getString("body")
@@ -109,5 +110,12 @@ public class MySQLMessagesDao implements Messages {
             previousMessages.add(extractMessage(rs));
         }
         return previousMessages;
+    }
+
+    public static void main(String[] args) {
+        Messages dao = DaoFactory.getMessagesDao();
+        List<Message> messages = dao.all();
+        System.out.println(messages);
+
     }
 }

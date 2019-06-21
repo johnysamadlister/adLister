@@ -90,7 +90,7 @@ public class MySQLAdsDao implements Ads {
             rs.getLong("id"),
             rs.getString("title"),
             rs.getString("description"),
-            rs.getString("img"),
+            rs.getString("img")
 
         );
     }
