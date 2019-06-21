@@ -6,4 +6,6 @@ import com.codeup.adlister.models.Category;
 
 public interface Categories {
     Category findByCategory();
+
+    Category insert();
 }
