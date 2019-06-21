@@ -6,12 +6,12 @@
         <jsp:param name="title" value="Welcome to my site!" />
     </jsp:include>
 </head>
-<body>
-
+    <jsp:include page="/WEB-INF/partials/body_top.jsp" />
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Welcome to the Adlister!</h1>
         <img  src="${pageContext.request.contextPath}img/default_profile.png">
     </div>
-    </body>
+<jsp:include page="/WEB-INF/partials/footer.jsp" />
+
     </html>
