@@ -16,7 +16,7 @@
 <body style="background-image: url(&quot;https://images.iphonephotographyschool.com/11918/1120b/iPhone-Photos-Texture-67.jpg&quot;); background-repeat: no-repeat; background-size: cover">
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid bg-dark text-light">
         <div class="container">
             <h1 class="display-4">Here are all the ads</h1>
             <p class="lead">Browse all ads or search an item specifically</p>
