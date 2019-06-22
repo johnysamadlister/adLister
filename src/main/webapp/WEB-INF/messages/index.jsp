@@ -6,7 +6,7 @@
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
 </head>
-<jsp:include page="/WEB-INF/partials/body_top.jsp" />
+<body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="jumbotron jumbotron-fluid">
@@ -29,4 +29,5 @@
 
 </div>
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
+</body>
 </html>

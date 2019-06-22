@@ -5,7 +5,7 @@
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
 </head>
-    <jsp:include page="/WEB-INF/partials/body_top.jsp" />
+<body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <div class="card p-3 mt-5 shadow">
@@ -26,4 +26,5 @@
     </div>
 
     <jsp:include page="/WEB-INF/partials/footer.jsp" />
+</body>
 </html>
