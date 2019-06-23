@@ -5,7 +5,7 @@
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
 </head>
-<body>
+    <jsp:include page="/WEB-INF/partials/body_top.jsp" />
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <div class="card shadow p-3 mt-5">
@@ -32,6 +32,6 @@
             </form>
             </div>
     </div>
+
     <jsp:include page="/WEB-INF/partials/footer.jsp" />
-</body>
 </html>

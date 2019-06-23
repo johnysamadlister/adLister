@@ -5,7 +5,7 @@
         <jsp:param name="title" value="Create a new Message" />
     </jsp:include>
 </head>
-<body>
+<jsp:include page="/WEB-INF/partials/body_top.jsp" />
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
 
@@ -29,5 +29,4 @@
 
     </div>
     <jsp:include page="/WEB-INF/partials/footer.jsp" />
-</body>
 </html>

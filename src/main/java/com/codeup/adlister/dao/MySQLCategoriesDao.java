@@ -1,8 +1,6 @@
 package com.codeup.adlister.dao;
-
 import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,6 +23,16 @@ public class MySQLCategoriesDao implements Categories{
 
     @Override
     public Category findByCategory() {
+        return null;
+    }
+
+    @Override
+    public Category insert() {
+        return null;
+    }
+
+
+    public Category insert(Long adid) {
         return null;
     }
 }

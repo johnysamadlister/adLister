@@ -8,6 +8,8 @@ public class Ad {
     private String img;
     private User user;
 
+    public Ad(){}
+
     public Ad(long id, long userId, String title, String description, String img) {
         this.id = id;
         this.userId = userId;

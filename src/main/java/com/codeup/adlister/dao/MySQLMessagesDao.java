@@ -1,3 +1,4 @@
+
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Message;
@@ -73,7 +74,7 @@ public class MySQLMessagesDao implements Messages {
             stmt.setDate(1, message.getDate());
             stmt.setLong(2, message.getSender_id());
             stmt.setLong(3, message.getRecipient_id());
-            stmt.setLong(4, message.getMessage_id());
+            stmt.setLong(4, message.getAd_id());
             stmt.setString(5, message.getBody());
             System.out.println(stmt);
             stmt.executeUpdate();

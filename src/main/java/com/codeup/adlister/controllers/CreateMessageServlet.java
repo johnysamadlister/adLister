@@ -1,3 +1,4 @@
+
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
@@ -39,7 +40,7 @@ public class CreateMessageServlet extends HttpServlet {
                 date,
                 user.getId(),
                 request.getParameter("recipient_id"),
-                request.getParameter("message_id"),
+                request.getParameter("ad_id"),
                 request.getParameter("body")
         );
 
