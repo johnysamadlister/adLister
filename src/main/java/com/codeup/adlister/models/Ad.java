@@ -10,12 +10,11 @@ public class Ad {
 
     public Ad(){}
 
-    public Ad(long id, long userId, String title, String description, String img) {
+    public Ad(long id, long userId, String title, String description) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
-        this.img = img;
     }
 
     public Ad(long userId, String title, String description, String img) {

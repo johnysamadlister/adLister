@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-public class    ManagerServlet {
-    @WebServlet(name = "controllers.ManagerServlet", urlPatterns = "/admin")
-    public class ViewProfileServlet extends HttpServlet {
+
+    @WebServlet(name = "controllers.AdminServlet", urlPatterns = "/admin")
+    public class AdminServlet extends HttpServlet {
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+            if (request.getParameter("user") == null){
+                response.sendRedirect("/login");
+            }
 
             User user = (User) request.getSession().getAttribute("user");
             if (!user.getAdmin()){
@@ -23,4 +27,4 @@ public class    ManagerServlet {
 
         }
     }
-}
+
