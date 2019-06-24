@@ -16,6 +16,7 @@ import java.io.IOException;
 
             if (request.getParameter("user") == null){
                 response.sendRedirect("/login");
+                return;
             }
 
             User user = (User) request.getSession().getAttribute("user");
