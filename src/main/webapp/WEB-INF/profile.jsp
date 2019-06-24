@@ -18,7 +18,7 @@
                 <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                     <ul class="list-group list group-flush mt-4">
-                        <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
+                        <li class="list-group-item" style="text-align: center; font-weight: bold">${ad.title}</li>
                     </ul>
                     <p class="card-text h-50 mt-3"><span style="font-weight: bold">Description:
                     </span>${ad.description}</p>
