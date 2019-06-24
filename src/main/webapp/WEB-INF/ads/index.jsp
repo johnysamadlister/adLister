@@ -30,15 +30,15 @@
             </form>
         </div>
     </div>
-       <div class="container">
-           <div class="row justify-content-center">
+       <div class="container justify-content-center">
+           <div class="row">
         <c:forEach var="ad" items="${ads}">
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
                 <ul class="list-group list group-flush mt-4">
-                    <li class="list-group-item" style="text-align: center; font-weight: bold">Title: ${ad.title}</li>
-
-                    <li class="list-group-item"> User: ${ad.user.username}</li>
+                    <li class="list-group-item" style="text-align: center; font-weight: bold">Title: <a
+                            href="/profile">${ad.title}</a> </li>
+                    <li class="list-group-item">Username: <a href="/profile">${ad.user.username}</a></li>
                     <c:forEach var="category" items="${categories}">
                         <li class="list-group-item">
                             <span class="badge badge-pill badge-primary p-2">
@@ -46,24 +46,16 @@
                         </li>
                     </c:forEach>
                 </ul>
-                <div style="background-image: url(""${ad.img}"")">
-                    <img src= class="card-text mx-auto" alt="..." style="height: 250px; width: 250px">
+                <div class="h-50 mt-3">
+                    <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
                 </div>
-                <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
-                <div class="row justify-content-between mx-2">
-
-                    <button class="btn btn btn-danger col mx-2">Delete</button>
-                    <button class="btn btn-primary col mx-2">Edit</button>
-                    <button class="btn btn-dark col mx-2">Message</button>
-                </div>
+                <button class="btn btn-primary col mx-auto mb-4">Message</button>
             </div>
         </c:forEach>
            </div>
        </div>
         <form action="/ads" method="GET">
-            <div class="d-flex justify-content-center">
-                <button id="load" class="btn btn-lg btn-primary shadow">Load More Ads</button>
-            </div>
+                <button id="load" class="btn btn-lg btn-primary shadow-lg">Load More Ads</button>
         </form>
 
 <div class="" style></div>
