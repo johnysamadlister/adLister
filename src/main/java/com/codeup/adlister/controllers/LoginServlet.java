@@ -37,10 +37,15 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+
         boolean validAttempt = BCrypt.checkpw(password, user.getPassword());
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
+            if (user.getAdmin()){
+                response.sendRedirect("/admin");
+                return;
+            }
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");

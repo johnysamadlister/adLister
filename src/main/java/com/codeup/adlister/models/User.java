@@ -5,9 +5,23 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private String img;
+    private Boolean admin = false;
+    private Boolean banned = false;
 
     public User() {}
+
+
+    public User(String username, long id){
+        this.id = id;
+        this.username = username;
+    }
+
+    public User(Long id ,String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
     public User(String username, String email, String password) {
         this.username = username;
@@ -15,33 +29,22 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, long id){
-        this.id = id;
-        this.username = username;
-    }
-
-    public User(long id,String username, String email, String password, String img) {
+    public User(Long id, String username, String email, String password, boolean admin, boolean banned){
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.img = img;
+        this.admin = admin;
+        this.banned = banned;
     }
 
 
-    public User(String username, String email, String password, String img) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.img = img;
+    public Boolean getAdmin() {
+        return admin;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 
     public long getId() {
