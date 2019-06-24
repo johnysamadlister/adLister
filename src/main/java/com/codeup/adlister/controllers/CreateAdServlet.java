@@ -75,12 +75,7 @@ public class CreateAdServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-
-<<<<<<< HEAD
         response.sendRedirect("/profile");
-=======
         response.sendRedirect("/ads");
-
->>>>>>> 5e7db7f44927d6f236e33170c6cd130c0a6db50b
     }
 }
