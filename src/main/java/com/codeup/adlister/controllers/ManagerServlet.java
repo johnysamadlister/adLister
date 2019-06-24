@@ -24,7 +24,7 @@ public class ManagerServlet {
                 response.sendRedirect("/profile");
             }
 
-            request.getRequestDispatcher("/WEB-INF/manager.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
 
         }
     }
