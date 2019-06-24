@@ -18,36 +18,32 @@
                 <div class="form-group d-flex justify-content-between">
                     <span class="badge badge-pill badge-primary p-2">
                         Electronics
-                        <input type="checkbox" name="categories" value="Electronics">
+                        <input type="checkbox" name="cat1" value="Electronic">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Automobile
-                        <input type="checkbox" name="ccategories" value="Automobile">
+                        <input type="checkbox" name="cat2" value="AutoMobile">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Tools
-                        <input type="checkbox" name="categories" value="Tools">
+                        <input type="checkbox" name="cat3" value="Tools">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Jobs
-                        <input type="checkbox" name="categories" value="Jobs">
+                        <input type="checkbox" name="cat4" value="Job">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Games
-                        <input type="checkbox" name="categories" value="Games">
+                        <input type="checkbox" name="cat5" value="Game">
                     </span>
                     <span class="badge badge-pill badge-primary p-2">
                          Toys
-                        <input type="checkbox" name="categories" value="Toys">
+                        <input type="checkbox" name="cat6" value="Toys">
                     </span>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea id="description" name="description" class="form-control" type="text"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="img">Img</label>
-                    <textarea id="img" name="img" class="form-control" type="image"></textarea>
                 </div>
                 <input type="submit" class="btn btn-block btn-primary">
             </form>
