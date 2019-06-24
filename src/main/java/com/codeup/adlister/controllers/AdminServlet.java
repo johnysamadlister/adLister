@@ -11,15 +11,18 @@ import java.io.IOException;
 
 @WebServlet(name = "AdminServlet", urlPatterns = "/admin")
 public class AdminServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("user") == null){
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user")== null){
             response.sendRedirect("/login");
         }else{
 
-            User user = (User) request.getAttribute("user");
+            User user = (User) request.getSession().getAttribute("user");
+
+            System.out.println(user.getUsername());
+            System.out.println(user.getAdmin());
 
             if (user.getAdmin()){
-                request.getRequestDispatcher("/WEB-INF/ads/admin.jsp")
+                request.getRequestDispatcher("/WEB-INF/admin.jsp")
                         .forward(request, response);
 
             }else{
@@ -29,7 +32,4 @@ public class AdminServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

@@ -37,6 +37,8 @@ public class LoginServlet extends HttpServlet {
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
 
+            System.out.println(user.getAdmin());
+
 
 
             if (user.getAdmin()){
