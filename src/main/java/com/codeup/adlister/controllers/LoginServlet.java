@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+
         boolean validAttempt = BCrypt.checkpw(password, user.getPassword());
 
         if (validAttempt) {
