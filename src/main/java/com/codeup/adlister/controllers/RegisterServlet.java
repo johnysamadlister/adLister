@@ -77,18 +77,13 @@ public class RegisterServlet extends HttpServlet {
 
         // create and save a new user
         System.out.println(img);
-        if (img != null) {
-            String hash_word = BCrypt.hashpw(password, BCrypt.gensalt());
-            User user = new User(username, email, hash_word, img);
-            DaoFactory.getUsersDao().insert(user);
-            response.sendRedirect("/login");
-            return;
-        }else{
+
+
             img = "img/default_profile.png";
             String hash_word = BCrypt.hashpw(password, BCrypt.gensalt());
-            User user = new User(username, email, hash_word, img);
+            User user = new User(username, email, hash_word);
             DaoFactory.getUsersDao().insert(user);
             response.sendRedirect("/login");
-        }
+
     }
 }
