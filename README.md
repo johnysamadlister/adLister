@@ -7,7 +7,7 @@ Registered users are able to view other user's ads, create, update, and delete t
 * Cloned the repo
 
 ## Built With
-* [Java SE]
+* Java SE
 * [Maven](https://maven.apache.org/) - Maven Dependancy Manager
 * [Bootstrap IV](https://getbootstrap.com/) - CSS Framework
 * [GithubProjects](https://help.github.com/en/articles/about-project-boards) - Project Manager
