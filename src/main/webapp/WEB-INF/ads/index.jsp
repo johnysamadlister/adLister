@@ -48,7 +48,9 @@
                 <div class="h-50 mt-3">
                     <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
                 </div>
-                <button class="btn btn-primary col mx-auto mb-4">Message</button>
+                <form action="/profile" method="post">
+                <button class="btn btn-primary col mx-auto mb-2 shadow">Email</button>
+                </form>
             </div>
         </c:forEach>
            </div>
