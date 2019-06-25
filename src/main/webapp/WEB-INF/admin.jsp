@@ -32,7 +32,7 @@
                     <th scope="row">${user.id}</th>
                     <td>${user.userName}</td>
                     <td>${user.email}</td>
-                    <td><button name="ban" value="${user.id}" class="btn btn-danger">BAN</button></td>
+                    <td><button  name="ban" value="${user.id}" class="btn btn-danger">BAN</button></td>
                 </tr>
                 </c:forEach>
                 </tbody>

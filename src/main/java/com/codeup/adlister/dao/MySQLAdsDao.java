@@ -104,6 +104,7 @@ public class MySQLAdsDao implements Ads {
 
     }
 
+
     @Override
     public List<Ad> NotUsersAds(String username) {
         PreparedStatement stmt = null;
@@ -126,8 +127,6 @@ public class MySQLAdsDao implements Ads {
                 stmt.setLong(1, ad.getUserId());
                 stmt.setString(2, ad.getTitle());
                 stmt.setString(3, ad.getDescription());
-
-                System.out.println(stmt);
                 stmt.executeUpdate();
                 ResultSet rs = stmt.getGeneratedKeys();
                 rs.next();
@@ -149,14 +148,14 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Ad updateAd(String column, String value, long id){
-        String query = "UPDATE ads SET ? = ? where id = ?";
+    public void updateAd(String titlevalue, String DescriptionValue, String id){
+        String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, column);
-            stmt.setString(2, value);
-            stmt.setLong(3, id);
-            return extractAd(stmt.executeQuery());
+            stmt.setString(1, titlevalue);
+            stmt.setString(2, DescriptionValue);
+            stmt.setString(3, id);
+            stmt.executeUpdate();
         }  catch (SQLException e){
             throw new RuntimeException("Error updating ad information", e);
         }
