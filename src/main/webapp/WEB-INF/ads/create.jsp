@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,30 +17,12 @@
                     <input id="title" name="title" class="form-control" type="text">
                 </div>
                 <div class="form-group d-flex justify-content-between">
+                <c:forEach var="category" items="${categories}">
                     <span class="badge badge-pill badge-primary p-2">
-                        Electronics
-                        <input type="checkbox" name="cat1" value="Electronic">
-                    </span>
-                    <span class="badge badge-pill badge-primary p-2">
-                         Automobile
-                        <input type="checkbox" name="cat2" value="AutoMobile">
-                    </span>
-                    <span class="badge badge-pill badge-primary p-2">
-                         Tools
-                        <input type="checkbox" name="cat3" value="Tools">
-                    </span>
-                    <span class="badge badge-pill badge-primary p-2">
-                         Jobs
-                        <input type="checkbox" name="cat4" value="Job">
-                    </span>
-                    <span class="badge badge-pill badge-primary p-2">
-                         Games
-                        <input type="checkbox" name="cat5" value="Game">
-                    </span>
-                    <span class="badge badge-pill badge-primary p-2">
-                         Toys
-                        <input type="checkbox" name="cat6" value="Toys">
-                    </span>
+                        ${category.category_name}
+                        <input type="checkbox" name="category${category.id}" value="${category.id}">
+                    </span
+                </c:forEach>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>

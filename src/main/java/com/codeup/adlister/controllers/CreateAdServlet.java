@@ -21,6 +21,9 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+
+        request.setAttribute("categories",DaoFactory.getCategoriesDao().list());
+
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
                 .forward(request, response);
     }
@@ -28,7 +31,6 @@ public class CreateAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
 
-        String adimg = request.getParameter("img");
 
         ArrayList<String> category = new ArrayList<>();
 
@@ -58,9 +60,6 @@ public class CreateAdServlet extends HttpServlet {
 
         System.out.println(category.toString());
 
-        if (adimg == null) {
-            adimg = "img/default_profile.png";
-        }
 
         Ad ad = new Ad(
                 user.getId(), // for now were not gonna hard code a user.

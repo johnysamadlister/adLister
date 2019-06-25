@@ -32,7 +32,13 @@ public class LoginServlet extends HttpServlet {
             user = DaoFactory.getUsersDao().findByUsername(username);
         }
 
+
+
         boolean validAttempt = BCrypt.checkpw(password, user.getPassword());
+
+        if (user.isBanned()){
+            validAttempt = false;
+        }
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
