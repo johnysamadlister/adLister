@@ -20,7 +20,6 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-<<<<<<< HEAD
 
     <div class="container">
         <div id="awesome-headline-container">
