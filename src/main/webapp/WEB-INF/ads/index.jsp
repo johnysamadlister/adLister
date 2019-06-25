@@ -8,6 +8,9 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <style>
+
+    </style>
 
 
 
@@ -54,7 +57,7 @@
            </div>
        </div>
         <form action="/ads" method="GET">
-                <button id="load" class="btn btn-lg btn-primary shadow-lg">Load More Ads</button>
+                <button id="load" class="btn btn-lg btn-primary shadow-lg center">Load More Ads</button>
         </form>
 
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
