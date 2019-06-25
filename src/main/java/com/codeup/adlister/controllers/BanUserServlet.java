@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(urlPatterns = "/admin/banUser")
+@WebServlet(name = "controllers.BanUserServlet", urlPatterns = "/admin/banUser")
 public class BanUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("user_id"));
+        System.out.println(id);
         DaoFactory.getUsersDao().banUser(id);
         response.sendRedirect("/admin");
     }

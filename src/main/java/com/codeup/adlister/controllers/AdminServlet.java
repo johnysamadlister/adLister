@@ -23,7 +23,7 @@ public class AdminServlet extends HttpServlet {
 
             if (user.getAdmin()){
                 try {
-                    request.setAttribute("users", DaoFactory.getUsersDao().list());
+                    request.setAttribute("allusers", DaoFactory.getUsersDao().list());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

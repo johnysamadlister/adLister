@@ -27,24 +27,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="user" items="${users}">
+                <c:forEach var="user" items="${allusers}">
+
                 <tr>
                     <th scope="row">${user.id}</th>
-                    <td>${user.userName}</td>
+                    <td>${user.username}</td>
                     <td>${user.email}</td>
 
                     <td>
                             <c:choose>
-                                <c:when test="${user.banned == true}">
+                                <c:when test="${!user.banned}">
                                 <form action="/admin/banUser" method="post">
                                     <input type="hidden" name="user_id" value="${user.id}">
-                                    <button name="unBan" value="${user.id}" class="btn btn-primary">Reinstate</button>
+                                    <button formaction="/admin/banUser" type="submit" name="unBan" value="${user.id}" class="btn btn-primary">Ban</button>
                                 </form>
                                 </c:when>
                                 <c:otherwise>
                                     <form action="/admin/unBanUser" method="post">
                                         <input type="hidden" name="user_id" value="${user.id}">
-                                        <button name="ban" value="${user.id}" class="btn btn-danger">Ban</button>
+                                        <button type="submit" name="ban" value="${user.id}" class="btn btn-danger">Reinstate</button>
                                     </form>
                                 </c:otherwise>
                             </c:choose>

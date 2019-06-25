@@ -42,6 +42,8 @@ public class User {
         return banned;
     }
 
+    public Boolean getBanned() { return banned; }
+
     public Boolean getAdmin() {
         return admin;
     }
