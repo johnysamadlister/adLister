@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS team_adlister_db;
 
 USE team_adlister_db;
 
+
 CREATE TABLE IF NOT EXISTS users (
   id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
   username VARCHAR(255) NOT NULL,
