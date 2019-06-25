@@ -18,6 +18,8 @@ public interface Ads {
 
     List<Ad>listadsplusinfo();
 
+    List<Ad>listEverything();
+
     List<Ad>retrieveAdsByUsername(String username);
 
     List<Ad>NotUsersAds(String username);

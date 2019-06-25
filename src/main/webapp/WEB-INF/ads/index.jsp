@@ -38,10 +38,10 @@
                 <ul class="list-group list group-flush mt-4">
                     <li class="list-group-item" style="text-align: center; font-weight: bold"><a href="/profile">${ad.title}</a> </li>
                     <li class="list-group-item">Username: <a href="/profile">${ad.user.username}</a></li>
-                    <c:forEach var="category" items="${categories}">
+                    <c:forEach var="category" items="${ad.ad_categories}">
                         <li class="list-group-item">
                             <span class="badge badge-pill badge-primary p-2">
-                            ${ad.category}
+                            ${category.category_name}
                         </li>
                     </c:forEach>
                 </ul>
