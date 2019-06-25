@@ -107,6 +107,13 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
+    public User list() throws SQLException {
+        String query = "SELECT * FROM users";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        return extractUser(stmt.executeQuery());
+    }
+
+    @Override
     public Long insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         try {

@@ -103,3 +103,5 @@ INSERT INTO category(category_name,category_description) VALUES ('Game','A form 
 INSERT INTO category(category_name,category_description) VALUES ('Toys','An object for a child to play with, typically a model or miniature replica of something.');
 
 SELECT  FROM category WHERE category_name = 'Toys';
+
+SELECT * FROM users;
