@@ -27,10 +27,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="user" items="${users}">
+                <c:forEach var="user" items="${allusers}">
+
                 <tr>
                     <th scope="row">${user.id}</th>
-                    <td>${user.userName}</td>
+                    <td>${user.username}</td>
                     <td>${user.email}</td>
 
                     <td>

@@ -4,6 +4,8 @@ import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -107,10 +109,10 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public User list() throws SQLException {
+    public List<User> list() throws SQLException {
         String query = "SELECT * FROM users";
         PreparedStatement stmt = connection.prepareStatement(query);
-        return extractUser(stmt.executeQuery());
+        return createUsersFromResults(stmt.executeQuery());
     }
 
     @Override
@@ -128,6 +130,14 @@ public class MySQLUsersDao implements Users {
         } catch (SQLException e) {
             throw new RuntimeException("Error creating new user", e);
         }
+    }
+
+    private List<User> createUsersFromResults(ResultSet rs) throws SQLException {
+        List<User> users = new ArrayList<>();
+        while (rs.next()) {
+            users.add(extractUser(rs));
+        }
+        return users;
     }
 
 
