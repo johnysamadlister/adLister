@@ -20,8 +20,6 @@ public class AdminServlet extends HttpServlet {
 
             User user = (User) request.getSession().getAttribute("user");
 
-            System.out.println(user.getUsername());
-            System.out.println(user.getAdmin());
 
             if (user.getAdmin()){
                 try {
