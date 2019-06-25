@@ -18,7 +18,7 @@ public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getSession().getAttribute("user") == null){
-            request.setAttribute("ads", DaoFactory.getAdsDao().all());
+            request.setAttribute("ads", DaoFactory.getAdsDao().listEverything());
         }else{
             User user = (User) request.getSession().getAttribute("user");
             request.setAttribute("ads", DaoFactory.getAdsDao().NotUsersAds(user.getUsername()));
