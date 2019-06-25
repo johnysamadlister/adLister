@@ -5,12 +5,18 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Welcome to my site!" />
     </jsp:include>
+    <style>
+        .carousel-inner img {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1 class="d-flex justify-content-center">Adlister</h1>
+        <h1 id="awesome-headline" class="d-flex justify-content-center">Welcome to the Adlister!</h1>
+        <h3 class="d-flex justify-content-center">Sell Stuffs. Find Treasures.</h3>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -21,16 +27,16 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/trombone2.jpg" class="d-block w-100" alt="trombone">
+                    <img src="img/trombone2.jpg" class="d-block w-50 img-fluid" alt="trombone">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/possums.jpg" class="d-block w-100" alt="possum sculpture">
+                    <img src="img/possums.jpg" class="d-block w-50 img-fluid" alt="possum sculpture">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/whistles.jpg" class="d-block w-100" alt="whistle collection">
+                    <img src="img/whistles.jpg" class="d-block w-50 img-fluid" alt="whistle collection">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/child.jpg" class="d-block w-100" alt="child in cage">
+                    <img src="img/child.jpg" class="d-block w-50 img-fluid" alt="rabbit cage">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
