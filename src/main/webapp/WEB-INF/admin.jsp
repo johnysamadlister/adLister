@@ -32,7 +32,23 @@
                     <th scope="row">${user.id}</th>
                     <td>${user.userName}</td>
                     <td>${user.email}</td>
-                    <td><button name="ban" value="${user.id}" class="btn btn-danger">BAN</button></td>
+                    <td>
+                            <c:choose>
+                                <c:when test="${user.banned == true}">
+                                <form action="/admin/banUser" method="post">
+                                    <input type="hidden" name="user_id" value="${user.id}">
+                                    <button name="unBan" value="${user.id}" class="btn btn-primary">Reinstate</button>
+                                </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="/admin/unBanUser" method="post">
+                                        <input type="hidden" name="user_id" value="${user.id}">
+                                        <button name="ban" value="${user.id}" class="btn btn-danger">Ban</button>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+                        </form>
+                    </td>
                 </tr>
                 </c:forEach>
                 </tbody>
@@ -55,8 +71,9 @@
                 <div class="h-50 mt-3">
                     <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
                 </div>
-                <form action="/admin" method="POST">
-                <button id="deleteAd" name="deleteAd" value="${ad.Id}" class="btn btn-danger col mx-auto mb-4">Delete</button>
+                <form action="/profile/deleteAd" method="post">
+                    <input type="hidden" name="ad_id" value="${ad.id}">
+                    <button class="btn btn-danger col mx-auto mt-2 mb-2 shadow">Delete</button>
                 </form>
             </div>
         </c:forEach>

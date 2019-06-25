@@ -47,6 +47,30 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
+    public User banUser(Long id){
+        String query = "UPDATE user SET banned = true where id = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            return extractUser(stmt.executeQuery());
+        }  catch (SQLException e){
+            throw new RuntimeException("Error banning user", e);
+        }
+    }
+
+    @Override
+    public User unBanUser(Long id){
+        String query = "UPDATE user SET banned = false where id = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            return extractUser(stmt.executeQuery());
+        }  catch (SQLException e){
+            throw new RuntimeException("Error reinstating user", e);
+        }
+    }
+
+    @Override
     public User findById(long id) {
         String query = "SELECT * FROM users WHERE id = ?";
         try {

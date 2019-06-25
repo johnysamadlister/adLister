@@ -18,7 +18,7 @@
             <c:forEach var="ad" items="${ads}">
                 <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
-                    <form action="/profile" method="post">
+                    <form action="/profile/updateAd" method="post">
                     <ul class="list-group list group-flush mt-4">
                         <li class="list-group-item" style="text-align: center; font-weight: bold">
                             <label for="title">Title: </label>
@@ -32,7 +32,10 @@
                     <div class="card-text h-40 w-90 mt-3 d-flex justify-content-center">
                     </div>
                     <button class="btn btn-dark col mx-auto mt-1 shadow">Update</button>
-                    <button class="btn btn-danger col mx-auto mt-2 mb-2 shadow">Delete</button>
+                    </form>
+                    <form action="/profile/deleteAd" method="post">
+                        <input type="hidden" name="ad_id" value="${ad.id}">
+                        <button class="btn btn-danger col mx-auto mt-2 mb-2 shadow">Delete</button>
                     </form>
                 </div>
             </c:forEach>
