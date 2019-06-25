@@ -49,24 +49,25 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public User banUser(Long id){
-        String query = "UPDATE user SET banned = true where id = ?";
+    public void banUser(Long id){
+        System.out.println(id);
+        String query = "UPDATE team_adlister_db.users SET banned = TRUE WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
-            return extractUser(stmt.executeQuery());
+            stmt.executeUpdate();
         }  catch (SQLException e){
             throw new RuntimeException("Error banning user", e);
         }
     }
 
     @Override
-    public User unBanUser(Long id){
-        String query = "UPDATE user SET banned = false where id = ?";
+    public void unBanUser(Long id){
+        String query = "UPDATE users SET banned = FALSE WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
-            return extractUser(stmt.executeQuery());
+            stmt.executeUpdate();
         }  catch (SQLException e){
             throw new RuntimeException("Error reinstating user", e);
         }
