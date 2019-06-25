@@ -6,6 +6,9 @@
         <jsp:param name="title" value="Welcome to my site!" />
     </jsp:include>
     <style>
+        #awesome-headline-container {
+            padding: 20px;
+        }
         .carousel-inner img {
             margin: auto;
         }
@@ -15,8 +18,10 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1 id="awesome-headline" class="d-flex justify-content-center">Welcome to the Adlister!</h1>
-        <h3 class="d-flex justify-content-center">Sell Stuffs. Find Treasures.</h3>
+        <div id="awesome-headline-container">
+            <h1 id="awesome-headline" class="d-flex justify-content-center">Welcome to the Adlister!</h1>
+            <h3 class="d-flex justify-content-center">Sell Stuffs. Find Treasures.</h3>
+        </div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
