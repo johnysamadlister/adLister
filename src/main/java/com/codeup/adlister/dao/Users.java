@@ -2,6 +2,9 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.User;
 
+import java.sql.SQLException;
+import java.util.List;
+
 
 public interface Users {
     User findByEmail (String email);
@@ -10,4 +13,7 @@ public interface Users {
     Long insert(User user);
     User deleteUser(long id);
     User updateUser(String column, String value, long id);
+    void banUser(Long id);
+    void unBanUser(Long id);
+    List<User> list() throws SQLException;
 }

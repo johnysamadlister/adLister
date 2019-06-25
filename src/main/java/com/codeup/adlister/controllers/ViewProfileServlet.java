@@ -31,4 +31,17 @@ public class ViewProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
 
     }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        User user = (User) request.getSession().getAttribute("user");
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        String id = request.getParameter("id");
+
+        DaoFactory.getAdsDao().updateAd(title,description,id);
+
+        response.sendRedirect("/profile");
+
+    }
 }

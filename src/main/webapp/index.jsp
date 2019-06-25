@@ -20,6 +20,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<<<<<<< HEAD
 
     <div class="container">
         <div id="awesome-headline-container">
@@ -56,8 +57,6 @@
         <div>
             <h1 class="d-flex justify-content-center headline-padding">START HERE</h1>
         </div>
-
-    </div>
 
 
 

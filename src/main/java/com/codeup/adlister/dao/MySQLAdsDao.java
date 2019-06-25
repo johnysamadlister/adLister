@@ -104,6 +104,7 @@ public class MySQLAdsDao implements Ads {
 
     }
 
+
     @Override
     public List<Ad> NotUsersAds(String username) {
         PreparedStatement stmt = null;
@@ -119,25 +120,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Long insert(Ad ad) {
-        try {
-                String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
-                PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-                stmt.setLong(1, ad.getUserId());
-                stmt.setString(2, ad.getTitle());
-                stmt.setString(3, ad.getDescription());
-
-                System.out.println(stmt);
-                stmt.executeUpdate();
-                ResultSet rs = stmt.getGeneratedKeys();
-                rs.next();
-                return rs.getLong(1);
-            } catch (SQLException e) {
-            throw new RuntimeException("Error creating a new ad.", e);
-        }
-    }
-    @Override
-    public Ad deleteAd(long id){
+    public Ad deleteAd(Long id) {
         String query = "DELETE FROM ads WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -149,18 +132,37 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Ad updateAd(String column, String value, long id){
-        String query = "UPDATE ads SET ? = ? where id = ?";
+    public Long insert(Ad ad) {
+        try {
+                String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
+                PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+                stmt.setLong(1, ad.getUserId());
+                stmt.setString(2, ad.getTitle());
+                stmt.setString(3, ad.getDescription());
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                rs.next();
+                return rs.getLong(1);
+            } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
+
+
+    @Override
+    public void updateAd(String titlevalue, String DescriptionValue, String id){
+        String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, column);
-            stmt.setString(2, value);
-            stmt.setLong(3, id);
-            return extractAd(stmt.executeQuery());
+            stmt.setString(1, titlevalue);
+            stmt.setString(2, DescriptionValue);
+            stmt.setString(3, id);
+            stmt.executeUpdate();
         }  catch (SQLException e){
             throw new RuntimeException("Error updating ad information", e);
         }
     }
+
 
     @Override
     public List<Ad> limit(long limit, long offset) {
