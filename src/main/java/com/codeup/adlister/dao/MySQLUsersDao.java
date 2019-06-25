@@ -57,6 +57,30 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error finding a user by ID", e);
         }
     }
+    @Override
+    public User deleteUser(long id){
+        String query = "DELETE FROM users WHERE id = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            return extractUser(stmt.executeQuery());
+        } catch (SQLException e){
+            throw new RuntimeException("Error deleting a user by ID", e);
+        }
+    }
+    @Override
+    public User updateUser(String column, String value, long id){
+        String query = "UPDATE users SET ? = ? where id = ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, column);
+            stmt.setString(2, value);
+            stmt.setLong(3, id);
+            return extractUser(stmt.executeQuery());
+        }  catch (SQLException e){
+            throw new RuntimeException("Error updating user information", e);
+        }
+    }
 
     @Override
     public Long insert(User user) {
@@ -74,6 +98,7 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error creating new user", e);
         }
     }
+
 
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
