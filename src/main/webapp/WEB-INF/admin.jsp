@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="row">
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-8">
         <h1 class="text-light d-flex justify-content-center">Users</h1>
         <table class="table table-hover table-dark">
                 <thead>
@@ -55,39 +55,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-</div>
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center">
-        <h1 class="text-light">Ads</h1>
-        <c:forEach var="ad" items="${ads}">
-            <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
-            height: 25rem;">
-                <ul class="list-group list group-flush mt-4">
-                    <li class="list-group-item" style="text-align: center; font-weight: bold"><a href="/profile">${ad.title}</a> </li>
-                    <li class="list-group-item">Username: <a href="/profile">${ad.user.username}</a></li>
-                    <c:forEach var="category" items="${categories}">
-                        <li class="list-group-item">
-                            <span class="badge badge-pill badge-primary p-2">${ad.category}
-                        </li>
-                    </c:forEach>
-                </ul>
-                <div class="h-50 mt-3">
-                    <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
-                </div>
-                <form action="/profile/deleteAd" method="post">
-                    <input type="hidden" name="ad_id" value="${ad.id}">
-                    <button class="btn btn-danger col mx-auto mt-2 mb-2 shadow">Delete</button>
-                </form>
-            </div>
-        </c:forEach>
-    </div>
-</div>
-<div class="row">
-        <form action="/manager" method="POST">
-            <label for="categoryName">Category</label>
-            <input type="text" id="categoryName" name="categoryName" placeholder="Category">
-            <input type="text" id="catDesc" name="catDesc" placeholder="Description">
-            <label for="catDesc">Description</label>
-        </form>
 </div>
 
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
