@@ -10,4 +10,6 @@ public interface Users {
     Long insert(User user);
     User deleteUser(long id);
     User updateUser(String column, String value, long id);
+    User banUser(Long id);
+    User unBanUser(Long id);
 }
