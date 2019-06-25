@@ -26,8 +26,9 @@ public interface Ads {
 
     List<Ad>NotUsersAds(String username);
 
+
     void updateAd(String column, String value,String id);
 
     Ad deleteAd(long id);
 
-}
+
