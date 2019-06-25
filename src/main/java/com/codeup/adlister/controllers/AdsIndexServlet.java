@@ -21,8 +21,7 @@ public class AdsIndexServlet extends HttpServlet {
             request.setAttribute("ads", DaoFactory.getAdsDao().listEverything());
         }else{
             User user = (User) request.getSession().getAttribute("user");
-            request.setAttribute("ads", DaoFactory.getAdsDao().NotUsersAds(user.getUsername()));
-            request.setAttribute("categories", DaoFactory.getCategoriesDao().list());
+            request.setAttribute("user", DaoFactory.getAdsDao().listEverythingExceptUser(user.getUsername()));
         }
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
