@@ -93,6 +93,8 @@ join users on users.id = ads.user_id
 join ads_cat on ads_cat.ad_id = ads.id
 join category on category.id = ads_cat.category_id;
 
+SELECT * FROM category JOIN ads_cat ON ads_cat.category_id   = category.id WHERE ad_id = 4;
+
 INSERT INTO category(category_name,category_description) VALUES ('AutoMobile','a road vehicle, typically with four wheels, powered by an internal combustion engine or electric motor and able to carry a small number of people.');
 INSERT INTO category(category_name,category_description) VALUES ('Electronic','A device having or operating with the aid of many small components, especially microchips and transistors, that control and direct an electric current.');
 INSERT INTO category(category_name,category_description) VALUES ('Tools','a device or implement, especially one held in the hand, used to carry out a particular function.');
