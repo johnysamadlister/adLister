@@ -4,6 +4,7 @@ import com.codeup.adlister.models.Category;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public interface Categories {
@@ -12,4 +13,8 @@ public interface Categories {
     void insert(ArrayList<String> category, Long ad_ID) throws SQLException;
 
     Long retrieveIdByName(String CategoryName);
+
+    List<Category> list();
+
+
 }
