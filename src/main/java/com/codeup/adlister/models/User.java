@@ -38,6 +38,9 @@ public class User {
         this.banned = banned;
     }
 
+    public Boolean isBanned(){
+        return banned;
+    }
 
     public Boolean getAdmin() {
         return admin;

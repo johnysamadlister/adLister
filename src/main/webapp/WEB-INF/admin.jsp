@@ -15,9 +15,10 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="row">
     <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-       <h1>Users</h1>
-            <table class="table table-hover table-dark">
+        <h1 class="text-light d-flex justify-content-center">Users</h1>
+        <table class="table table-hover table-dark">
                 <thead>
+
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Username</th>
@@ -31,14 +32,14 @@
                     <th scope="row">${user.id}</th>
                     <td>${user.userName}</td>
                     <td>${user.email}</td>
-                    <td><button name="delete" value="${user.id}" class="btn btn-danger"></button></td>
+                    <td><button name="ban" value="${user.id}" class="btn btn-danger">BAN</button></td>
                 </tr>
                 </c:forEach>
                 </tbody>
             </table>
 </div>
-    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <h1>Ads</h1>
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center">
+        <h1 class="text-light">Ads</h1>
         <c:forEach var="ad" items="${ads}">
             <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
@@ -54,8 +55,9 @@
                 <div class="h-50 mt-3">
                     <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
                 </div>
-                <button id="deleteAd" name="deleteAd" name="deleteAd" value="${ad.Id}"
-                        class="btn btn-danger col mx-auto mb-4">Delete</button>
+                <form action="/admin" method="POST">
+                <button id="deleteAd" name="deleteAd" value="${ad.Id}" class="btn btn-danger col mx-auto mb-4">Delete</button>
+                </form>
             </div>
         </c:forEach>
     </div>
