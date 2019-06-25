@@ -38,27 +38,24 @@
                 <ul class="list-group list group-flush mt-4">
                     <li class="list-group-item" style="text-align: center; font-weight: bold"><a href="/profile">${ad.title}</a> </li>
                     <li class="list-group-item">Username: <a href="/profile">${ad.user.username}</a></li>
+                    <div class="d-flex justify-content-start mt-2">
                     <c:forEach var="category" items="${ad.ad_categories}">
-                        <li class="list-group-item">
-                            <span class="badge badge-pill badge-primary p-2">
-                            ${category.category_name}
-                        </li>
+                        <span class="badge badge-pill badge-primary p-2 mr-1">
+                                ${category.category_name}
+                        </span>
                     </c:forEach>
+                    </div>
                 </ul>
                 <div class="h-50 mt-3">
                     <p class="card-text"><span style="font-weight: bold">Description: </span>${ad.description}</p>
                 </div>
-                <form action="/profile" method="post">
-                <button class="btn btn-primary col mx-auto mb-2 shadow">Email</button>
-                </form>
+                <div class="d-flex justify-content-center mb-2">
+                    <h3><a href = "mailto: ${ad.user.email}?subject=${ad.title}">Email</a></h3>
+                </div>
             </div>
         </c:forEach>
            </div>
        </div>
-        <form action="/ads" method="GET">
-                <button id="load" class="btn btn-lg btn-primary shadow-lg">Load More Ads</button>
-        </form>
-
 <jsp:include page="/WEB-INF/partials/footer.jsp" />
 </body>
 </html>
