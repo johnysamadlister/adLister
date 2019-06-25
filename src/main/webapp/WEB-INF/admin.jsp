@@ -32,6 +32,7 @@
                     <th scope="row">${user.id}</th>
                     <td>${user.userName}</td>
                     <td>${user.email}</td>
+
                     <td>
                             <c:choose>
                                 <c:when test="${user.banned == true}">

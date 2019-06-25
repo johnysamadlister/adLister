@@ -18,15 +18,17 @@
             <c:forEach var="ad" items="${ads}">
                 <div class="card col col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mx-3 my-4 shadow" style="width: 18rem;
             height: 25rem;">
-                    <form action="/profile/updateAd" method="post">
+                    <form action="/profile" method="post">
+                        <input type="hidden" name="id" value="${ad.id}">
+
                     <ul class="list-group list group-flush mt-4">
                         <li class="list-group-item" style="text-align: center; font-weight: bold">
                             <label for="title">Title: </label>
-                            <input type="text" id="title" name="title" placeholder="${ad.title}">
+                            <input type="text" id="title" name="title" placeholder="${ad.title}" value="${ad.title}">
                         </li>
                         <li class="list-group list group-flush mt-1">
-                            <textarea name="description" id="description" cols="30" rows="7"
-                                      placeholder="Description: ${ad.description}"></textarea>
+                            <textarea style="height: 160px; overflow-y: scroll; resize: none" name="description" id="description" cols="30" rows="7"
+                                      placeholder="Description:${ad.description}">${ad.description}</textarea>
                         </li>
                     </ul>
                     <div class="card-text h-40 w-90 mt-3 d-flex justify-content-center">
