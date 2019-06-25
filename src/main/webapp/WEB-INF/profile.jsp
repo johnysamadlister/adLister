@@ -8,10 +8,11 @@
 </head>
     <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
+    <div class=" d-flex justify-content-center">
         <h1 class="text-light">Welcome, ${sessionScope.user.username}!</h1>
     </div>
     <h2 class="d-flex justify-content-center text-light">Here are your ads</h2>
+    <h2 class="d-flex justify-content-center text-light">You can edit or delete your existing ads</h2>
     <div class="container">
         <div class="row justify-content-center">
             <c:forEach var="ad" items="${ads}">
@@ -23,18 +24,34 @@
                             <label for="title">Title: </label>
                             <input type="text" id="title" name="title" placeholder="${ad.title}">
                         </li>
+                        <li class="list-group list group-flush mt-1">
+                            <textarea name="description" id="description" cols="30" rows="7"
+                                      placeholder="Description: ${ad.description}"></textarea>
+                        </li>
                     </ul>
                     <div class="card-text h-40 w-90 mt-3 d-flex justify-content-center">
-                        <p class="align-text-center">Description</p>
-                        <br>
-                         <textarea name="description" id="description" cols="30" rows="7"
-                                   placeholder="${ad.description}"></textarea>
                     </div>
-                    <button class="btn btn-dark col mx-auto mt-4 shadow">Update</button>
+                    <button class="btn btn-dark col mx-auto mt-1 shadow">Update</button>
                     <button class="btn btn-danger col mx-auto mt-2 mb-2 shadow">Delete</button>
                     </form>
                 </div>
             </c:forEach>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <h2 class="d-flex justify-content-center text-light">Edit your info below</h2>
+        </div>
+        <div class="row d-flex justify-content-center mb-3">
+            <div class="card col col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-6 shadow">
+                <form action="/profile" method="POST">
+                    <ul class="list-group list group-flush mt-4">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="${sessionScope.user.username}">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="${sessionScope.user.email}">
+                        <button class="btn btn-primary mt-2">Update</button>
+                    </ul>
+                </form>
+            </div>
         </div>
     </div>
 
