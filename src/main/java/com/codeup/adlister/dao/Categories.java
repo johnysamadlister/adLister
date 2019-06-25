@@ -16,5 +16,5 @@ public interface Categories {
 
     List<Category> list();
 
-
+    List<Category> listbyAdid(long ad_id);
 }

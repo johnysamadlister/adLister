@@ -64,6 +64,33 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public List<Ad> listEverything() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads JOIN ads_cat ON ads_cat.ad_id = ads.id JOIN category ON category.id = ads_cat.category_id JOIN users ON users.id = ads.user_id");
+            ResultSet rs = stmt.executeQuery();
+            return createMegaAdsFromResults(rs);
+        }catch (SQLException e){
+            throw new RuntimeException("Error searching all ads", e);
+        }
+
+    }
+
+    @Override
+    public List<Ad> listEverythingExceptUser(String username) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads JOIN ads_cat ON ads_cat.ad_id = ads.id JOIN category ON category.id = ads_cat.category_id JOIN users ON users.id = ads.user_id WHERE users.username != ?");
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            return createMegaAdsFromResults(rs);
+        }catch (SQLException e){
+            throw new RuntimeException("Error searching all ads", e);
+        }
+
+    }
+
+    @Override
     public List<Ad> retrieveAdsByUsername(String username) {
         PreparedStatement stmt = null;
         try {
@@ -174,6 +201,25 @@ public class MySQLAdsDao implements Ads {
             rs.getString("description"),
                 rs.getLong("user_id")
         );
+    }
+
+    private Ad extractAdCategoryUser(ResultSet rs) throws SQLException {
+        return new Ad(
+                rs.getLong("id"),
+                rs.getString("title"),
+                rs.getString("description"),
+                DaoFactory.getUsersDao().findById(rs.getLong("user_id")),
+                DaoFactory.getCategoriesDao().listbyAdid(rs.getLong("id"))
+
+        );
+    }
+
+    private List<Ad> createMegaAdsFromResults(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()) {
+            ads.add(extractAdCategoryUser(rs));
+        }
+        return ads;
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
