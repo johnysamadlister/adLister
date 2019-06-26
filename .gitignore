@@ -1,5 +1,3 @@
 *.iml
 target/
 .idea/
-Config.java
-database.sql

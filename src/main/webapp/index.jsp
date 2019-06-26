@@ -14,6 +14,7 @@
             <div>
                 <h2>A place you can...</h2>
             </div>
+            <img width="200px" src="images/profile_icon.svg">
             <div>
                 <h2>Browse ads from other users,</h2>
             </div>

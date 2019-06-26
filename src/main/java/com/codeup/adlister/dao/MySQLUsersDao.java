@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.dao.interfaces.Users;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -26,7 +27,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByEmail(String email) {
-        String query = "SELECT * FROM users WHERE email = ?";
+        String query = "SELECT * FROM team_adlister_db.users WHERE email = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, email);
@@ -38,7 +39,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByUsername(String username) {
-        String query = "SELECT * FROM users WHERE username = ?";
+        String query = "SELECT * FROM team_adlister_db.users WHERE username = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, username);
@@ -63,7 +64,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public void unBanUser(Long id){
-        String query = "UPDATE users SET banned = FALSE WHERE id = ?";
+        String query = "UPDATE team_adlister_db.users SET banned = FALSE WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
@@ -75,7 +76,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findById(long id) {
-        String query = "SELECT * FROM users WHERE id = ?";
+        String query = "SELECT * FROM team_adlister_db.users WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
@@ -86,7 +87,7 @@ public class MySQLUsersDao implements Users {
     }
     @Override
     public User deleteUser(long id){
-        String query = "DELETE FROM users WHERE id = ?";
+        String query = "DELETE FROM team_adlister_db.users WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
@@ -97,7 +98,7 @@ public class MySQLUsersDao implements Users {
     }
     @Override
     public User updateUser(String column, String value, long id){
-        String query = "UPDATE users SET ? = ? where id = ?";
+        String query = "UPDATE team_adlister_db.users SET ? = ? where id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, column);
@@ -111,14 +112,14 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public List<User> list() throws SQLException {
-        String query = "SELECT * FROM users";
+        String query = "SELECT * FROM team_adlister_db.users";
         PreparedStatement stmt = connection.prepareStatement(query);
         return createUsersFromResults(stmt.executeQuery());
     }
 
     @Override
     public Long insert(User user) {
-        String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+        String query = "INSERT INTO team_adlister_db.users(username, email, password) VALUES (?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getUsername());

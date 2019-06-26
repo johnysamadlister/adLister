@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet(name = "controllers.BanUserServlet", urlPatterns = "/admin/ban")
-public class BanUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/admin/unBanUser")
+public class UnBanUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("user_id"));
-        System.out.println(id);
-        DaoFactory.getUsersDao().banUser(id);
+        DaoFactory.getUsersDao().unBanUser(id);
         response.sendRedirect("/admin");
     }
 }

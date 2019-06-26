@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="partials/head.jsp">
+    <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="partials/navbar.jsp" />
+    <jsp:include page="../partials/navbar.jsp" />
     <div class="container">
         <div class="card shadow p-3 mt-5">
             <h1 style="text-align: center">Please fill in your information</h1>

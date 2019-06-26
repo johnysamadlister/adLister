@@ -1,4 +1,5 @@
 package com.codeup.adlister.dao;
+import com.codeup.adlister.dao.interfaces.Categories;
 import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 
@@ -22,19 +23,17 @@ public class MySQLCategoriesDao implements Categories {
         }
     }
 
-    @Override
     public Category findByCategory() {
         return null;
     }
 
 
-    @Override
     public void insert(ArrayList<String> categories, Long ad_ID) throws SQLException {
         try {
             for ( String category : categories ) {
                     if (retrieveIdByName(category) != null) {
                         System.out.println(category);
-                        String insertQuery = "INSERT INTO ads_cat(ad_id, category_id) VALUES (?, ?)";
+                        String insertQuery = "INSERT INTO team_adlister_db.ads_cat(ad_id, category_id) VALUES (?, ?)";
                         PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
                         stmt.setLong(1, ad_ID);
                         stmt.setLong(2, retrieveIdByName(category));
@@ -48,7 +47,6 @@ public class MySQLCategoriesDao implements Categories {
         }
     }
 
-    @Override
     public Long retrieveIdByName(String CategoryName) {
         PreparedStatement stmt = null;
         try {
@@ -67,7 +65,7 @@ public class MySQLCategoriesDao implements Categories {
     public List<Category> list() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM category");
+            stmt = connection.prepareStatement("SELECT * FROM team_adlister_db.category");
             ResultSet rs = stmt.executeQuery();
             return createCategoryFromResults(rs);
         } catch (SQLException e) {
@@ -78,7 +76,7 @@ public class MySQLCategoriesDao implements Categories {
     public List<Category> listbyAdid(long ad_id) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM category JOIN ads_cat ON ads_cat.category_id   = category.id WHERE ad_id = ?");
+            stmt = connection.prepareStatement("SELECT * FROM team_adlister_db.category JOIN team_adlister_db.ads_cat ON ads_cat.category_id   = category.id WHERE ad_id = ?");
             stmt.setLong(1, ad_id);
             ResultSet rs = stmt.executeQuery();
             return createCategoryFromResults(rs);

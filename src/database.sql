@@ -1,3 +1,5 @@
+# Run all queries below to create DataBase
+
 CREATE DATABASE IF NOT EXISTS team_adlister_db;
 
 USE team_adlister_db;
@@ -7,25 +9,28 @@ CREATE TABLE IF NOT EXISTS users (
   username VARCHAR(255) NOT NULL,
   email    VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  admin       BOOLEAN DEFAULT FALSE NOT NULL,
-  banned      BOOLEAN DEFAULT FALSE NOT NULL,
-
-   PRIMARY KEY (id));
+  img      TEXT,
+  admin    BOOLEAN DEFAULT FALSE NOT NULL,
+  banned   BOOLEAN DEFAULT FALSE NOT NULL,
+  PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS ads(
- id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
- user_id     INT UNSIGNED NOT NULL,
- title       VARCHAR(255) NOT NULL,
- description TEXT NOT NULL,
-
+ id            INT UNSIGNED NOT NULL AUTO_INCREMENT,
+ user_id       INT UNSIGNED NOT NULL,
+ title         VARCHAR(255) NOT NULL,
+ description   TEXT NOT NULL,
+ img           TEXT NOT NULL,
+ creation_date DATE NOT NULL,
+ price         DOUBLE(16,2),
  PRIMARY KEY (id),
  FOREIGN KEY (user_id) REFERENCES team_adlister_db.users(id)
-);
+)   ;
 
 CREATE TABLE IF NOT EXISTS category(
  id                    INT UNSIGNED NOT NULL AUTO_INCREMENT,
  category_name         varchar(255) NOT NULL,
  category_description  TEXT,
+ img                   TEXT,
  PRIMARY KEY (id)
 );
 
@@ -36,20 +41,15 @@ CREATE TABLE IF NOT EXISTS ads_cat(
  FOREIGN KEY (category_id) REFERENCES team_adlister_db.category(id)
 );
 
+# Stop Here
+
+
+
+
 
 
 
 DROP DATABASE team_adlister_db;
-
-DROP TABLE team_adlister_db.users;
-
-
-SELECT * FROM users;
-
-SELECT * FROM users LIMIT 2,2;
-SELECT * FROM users LIMIT 4;
-
-SELECT * FROM ads JOIN users ON users.id = ads.user_id WHERE ads.title LIKE '%samscamp%' OR ads.description LIKE '%samscamp%' OR users.username LIKE '%samscamp%';
 
 
 

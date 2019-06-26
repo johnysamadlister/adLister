@@ -1,5 +1,6 @@
 package com.codeup.adlister.models;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Ad {
@@ -7,7 +8,9 @@ public class Ad {
     private long userId;
     private String title;
     private String description;
-    private String img;
+    private String img = "images/image_icon.svg";
+    private Date creation_date;
+    private double price;
     private User user;
     private List<Category> ad_categories;
 
@@ -34,6 +37,15 @@ public class Ad {
         this.user = user;
         this.ad_categories = categories;
     }
+
+
+    public Date getCreation_date() { return creation_date; }
+
+    public void setCreation_date(Date creation_date) { this.creation_date = creation_date; }
+
+    public double getPrice() { return price; }
+
+    public void setPrice(double price) { this.price = price; }
 
     public List<Category> getAd_categories() {
         return ad_categories;

@@ -1,4 +1,4 @@
-package com.codeup.adlister.dao;
+package com.codeup.adlister.dao.interfaces;
 
 import com.codeup.adlister.models.Category;
 

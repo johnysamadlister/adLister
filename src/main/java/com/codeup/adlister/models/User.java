@@ -5,6 +5,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String img = "images/profile_icon.svg";
     private Boolean admin = false;
     private Boolean banned = false;
 
@@ -37,6 +38,12 @@ public class User {
         this.admin = admin;
         this.banned = banned;
     }
+
+    public String getImg() { return img; }
+
+    public void setImg(String img) { this.img = img; }
+
+    public void setBanned(Boolean banned) { this.banned = banned; }
 
     public Boolean isBanned(){
         return banned;
