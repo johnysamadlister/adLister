@@ -67,7 +67,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> listEverything() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads JOIN ads_cat ON ads_cat.ad_id = ads.id JOIN category ON category.id = ads_cat.category_id JOIN users ON users.id = ads.user_id");
+            stmt = connection.prepareStatement("SELECT * FROM ads JOIN ads_cat ON ads_cat.ad_id = ads.id JOIN category ON category.id = ads_cat.category_id JOIN users ON users.id = ads.user_id WHERE users.banned = false");
             ResultSet rs = stmt.executeQuery();
             return createMegaAdsFromResults(rs);
         }catch (SQLException e){

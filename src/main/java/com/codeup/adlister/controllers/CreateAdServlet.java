@@ -36,7 +36,7 @@ public class CreateAdServlet extends HttpServlet {
 
         ArrayList<String> category = new ArrayList<>();
 
-        for(int x = 0; x <= categories.size(); x++ ){
+        for(int x = 0; x < categories.size(); x++ ){
             String cat = "category"+x;
 
             if (request.getParameter(cat) != null){
