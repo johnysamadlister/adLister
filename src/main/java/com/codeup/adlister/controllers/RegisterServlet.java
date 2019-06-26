@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -20,11 +22,10 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
-        String img = request.getParameter("img");
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
-        String errormessage = "";
+        String errormessage;
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -34,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
 
         if (inputHasErrors) {
             errormessage = "Passwords must match.";
-            request.getSession().setAttribute("error", errormessage);
+            request.setAttribute("error", errormessage);
             response.sendRedirect("/register");
             return;
         }
@@ -43,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
 
         if (userAlreadyExists) {
             errormessage = "That Username already exists.";
-            request.getSession().setAttribute("error", errormessage);
+            request.setAttribute("error", errormessage);
             response.sendRedirect("/register");
             return;
         }
@@ -52,38 +53,40 @@ public class RegisterServlet extends HttpServlet {
 
         if (emailAlreadyExists) {
             errormessage = "That e-mail is already in use.";
-            request.getSession().setAttribute("error", errormessage);
+            request.setAttribute("error", errormessage);
             response.sendRedirect("/register");
             return;
         }
 
-        boolean containsInvalidSymbol =
-                   username.contains("@")
-                || username.contains("*")
-                || username.contains("&")
-                || username.contains("#")
-                || username.contains("%")
-                || username.contains("!")
-                || username.contains("$")
-                || username.contains("^")
-                || username.contains("~");
+        List<String> invalidSymbols = new ArrayList<>();
+            invalidSymbols.add("@");
+            invalidSymbols.add("*");
+            invalidSymbols.add("&");
+            invalidSymbols.add("#");
+            invalidSymbols.add("%");
+            invalidSymbols.add("!");
+            invalidSymbols.add("$");
+            invalidSymbols.add("^");
+            invalidSymbols.add("~");
 
-        if (containsInvalidSymbol) {
-            errormessage = "Username cannot contain Special Symbols.";
-            request.getSession().setAttribute("error", errormessage);
-            response.sendRedirect("/register");
-            return;
-        }
+
+
+            for (String symbol : invalidSymbols) {
+                if (username.contains(symbol)){
+                    errormessage = "Username cannot contain Special Symbols.";
+                    request.getSession().setAttribute("error", errormessage);
+                    response.sendRedirect("/register");
+                    return;
+                }
+            }
+
+
 
         // create and save a new user
-        System.out.println(img);
-
-
-            img = "img/default_profile.png";
             String hash_word = BCrypt.hashpw(password, BCrypt.gensalt());
             User user = new User(username, email, hash_word);
             DaoFactory.getUsersDao().insert(user);
             response.sendRedirect("/login");
 
+        }
     }
-}

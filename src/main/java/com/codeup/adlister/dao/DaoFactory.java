@@ -1,9 +1,5 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.dao.interfaces.Ads;
-import com.codeup.adlister.dao.interfaces.Categories;
-import com.codeup.adlister.dao.interfaces.Users;
-
 public class DaoFactory {
     private static Ads adsDao;
     private static Users usersDao;

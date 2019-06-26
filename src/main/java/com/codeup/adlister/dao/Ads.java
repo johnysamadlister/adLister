@@ -1,4 +1,4 @@
-package com.codeup.adlister.dao.interfaces;
+package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 
@@ -16,8 +16,6 @@ public interface Ads {
     List<Ad> addToAds(long limit, long offset, List<Ad> previousAds);
 
     List<Ad> searchAds(String search);
-
-    List<Ad> listadsplusinfo();
 
     List<Ad> listEverything();
 

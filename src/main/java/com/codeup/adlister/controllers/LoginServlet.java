@@ -14,18 +14,14 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("/profile");
-            return;
-        }
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-    }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-            User user = new User();
+            User user;
         if (username.contains("@")){
             user = DaoFactory.getUsersDao().findByEmail(username);
         }else {
@@ -33,26 +29,30 @@ public class LoginServlet extends HttpServlet {
         }
 
 
-
         boolean validAttempt = BCrypt.checkpw(password, user.getPassword());
 
-        if (user.isBanned()){
-            validAttempt = false;
+        String errormessage;
+
+        if (user.isBanned() && validAttempt){
+                errormessage = "This user is currently Suspended";
+                request.setAttribute("error", errormessage);
+                response.sendRedirect("/");
+                return;
         }
+
+
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
 
-            System.out.println(user.getAdmin());
-
-
-
-            if (user.getAdmin()){
+            if (user.isAdmin()){
                 response.sendRedirect("/admin");
                 return;
             }
             response.sendRedirect("/profile");
-        } else {
+        }else{
+            errormessage = "UserName or Password were Incorrect.";
+            request.setAttribute("error", errormessage  );
             response.sendRedirect("/login");
         }
     }

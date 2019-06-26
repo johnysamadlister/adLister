@@ -1,45 +1,5 @@
-# Run all queries below to create DataBase
 
-CREATE DATABASE IF NOT EXISTS team_adlister_db;
 
-USE team_adlister_db;
-
-CREATE TABLE IF NOT EXISTS users (
-  id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  username VARCHAR(255) NOT NULL,
-  email    VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  img      TEXT,
-  admin    BOOLEAN DEFAULT FALSE NOT NULL,
-  banned   BOOLEAN DEFAULT FALSE NOT NULL,
-  PRIMARY KEY (id));
-
-CREATE TABLE IF NOT EXISTS ads(
- id            INT UNSIGNED NOT NULL AUTO_INCREMENT,
- user_id       INT UNSIGNED NOT NULL,
- title         VARCHAR(255) NOT NULL,
- description   TEXT NOT NULL,
- img           TEXT NOT NULL,
- creation_date DATE NOT NULL,
- price         DOUBLE(16,2),
- PRIMARY KEY (id),
- FOREIGN KEY (user_id) REFERENCES team_adlister_db.users(id)
-)   ;
-
-CREATE TABLE IF NOT EXISTS category(
- id                    INT UNSIGNED NOT NULL AUTO_INCREMENT,
- category_name         varchar(255) NOT NULL,
- category_description  TEXT,
- img                   TEXT,
- PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS ads_cat(
- ad_id   INT UNSIGNED NOT NULL,
- category_id  INT UNSIGNED NOT NULL,
- FOREIGN KEY (ad_id) REFERENCES team_adlister_db.ads(id),
- FOREIGN KEY (category_id) REFERENCES team_adlister_db.category(id)
-);
 
 # Stop Here
 
